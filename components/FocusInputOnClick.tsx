@@ -40,20 +40,19 @@ import React from "react";
 // using CallbackRef
 export default class FocusInputOnClick extends React.Component {
   state = {
-    myObject: ""
-  }
+    myObject: {}
+  };
   constructor(props) {
     super(props);
     // this.handleOnClick = this.handleOnClick.bind(this);
   }
   myInputRef;
   handleOnClick = () => {
-    console.log(this.myInputRef);
     this.myInputRef.focus();
   };
 
   myParamToObject = (paramString) => {
-    const myRegex = /^([\w-]+:[\w-_]+)+$/g;
+    const myRegex = /([\w-]+:[\w-_]+)+/g;
     let keyValueArray = paramString.match(myRegex);
     let keyValueObject = {};
     keyValueArray && keyValueArray.forEach(keyValue => {
@@ -65,7 +64,6 @@ export default class FocusInputOnClick extends React.Component {
   }
   handleInputChange = ($event) => {
     const value = $event.target.value;
-    console.log(value);
     this.setState({ myObject: this.myParamToObject(value)});
   }
   render() {
@@ -75,10 +73,9 @@ export default class FocusInputOnClick extends React.Component {
           type="text"
           ref={handle => (this.myInputRef = handle)}
           placeholder="focus the text input"
-          onChange={this.handleInputChange}
-        />
+          onChange={this.handleInputChange} />
         <button onClick={this.handleOnClick}>CLick</button>
-        <div><p>{this.state.myObject}</p></div>
+        <div><p>{JSON.stringify(this.state.myObject)}</p></div>
       </div>
     );
   }
