@@ -10,7 +10,8 @@ import "./style.css";
 function App() {
   return (
     <div>
-      <FocusInputOnClick />
+      <PrintAsYouType />
+      <HelloWorld1 fname="sonalkumar" lname="kadelwar" />
     </div>
   );
 }

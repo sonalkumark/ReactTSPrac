@@ -1,4 +1,6 @@
 import React from "react";
+import WrapWithBackground from '../hoc/WrapWithBackground';
+import withLogger from "../hoc/WrapWithLogger";
 function getName(fname, lname) {
   return fname + " " + lname;
 }
@@ -12,5 +14,5 @@ const HelloWorld3 = ({ fname, lname }) => {
   return <div>Hello {getName(fname, lname)}</div>;
 };
 
-export default HelloWorld1;
+export default withLogger(WrapWithBackground(HelloWorld1));
 export { HelloWorld2, HelloWorld3 };

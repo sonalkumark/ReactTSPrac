@@ -1,6 +1,8 @@
 import React from "react";
+import WrapWithBackground from "../hoc/WrapWithBackground";
+import withLogger from "../hoc/WrapWithLogger";
 
-export default class PrintAsYouType extends React.Component {
+class PrintAsYouType extends React.Component {
   state = {
     input: ""
   };
@@ -20,3 +22,4 @@ export default class PrintAsYouType extends React.Component {
     );
   }
 }
+export default withLogger(WrapWithBackground(PrintAsYouType));
